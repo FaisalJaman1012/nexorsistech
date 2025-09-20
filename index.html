@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexorsis Tech - AI-Powered Cybersecurity Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            background-color: #04091a;
+        }
+
+        #bg-video {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -1;
+            opacity: 0.3;
+            object-fit: cover; /* Ensures video covers the entire space without distortion */
+        }
+
+        .gradient-text {
+            background-image: linear-gradient(to right, #6EE7B7, #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scroll-down {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .service-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: translateY(0);
+            position: relative;
+            z-index: 10;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 200, 255, 0.2);
+        }
+
+        .icon-container {
+            background: linear-gradient(135deg, #1A2038, #0F172A);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Advanced Solutions Section Styling */
+        .solution-grid {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .solution-card {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(15, 23, 42, 0.5); /* Updated for transparency */
+            border-radius: 1.5rem;
+            border: 1px solid rgba(26, 32, 56, 0.5); /* Updated for transparency */
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 200, 255, 0.2), 
+                        0 0 40px rgba(0, 200, 255, 0.1);
+        }
+
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+
+        .solution-card:hover::before {
+            opacity: 1;
+        }
+
+        .solution-icon {
+            filter: drop-shadow(0 0 8px rgba(110, 231, 183, 0.5));
+            transition: filter 0.3s ease;
+        }
+        
+        .solution-card:hover .solution-icon {
+            filter: drop-shadow(0 0 16px rgba(110, 231, 183, 0.8));
+        }
+
+        .solutions-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: radial-gradient(circle, #3B82F6 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: 0;
+            animation: pulse-bg 10s infinite alternate;
+        }
+        
+        @keyframes pulse-bg {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .contact-box {
+            @apply bg-slate-800 bg-opacity-50 p-8 rounded-3xl shadow-lg border border-slate-700 transition-all duration-300;
+        }
+        
+        .contact-box:hover {
+            @apply transform scale-105 shadow-2xl;
+        }
+        
+        /* Clients Section Styling */
+        .client-logo {
+            filter: grayscale(100%) opacity(60%);
+            transition: filter 0.3s ease-in-out;
+            width: 150px;
+            height: 50px;
+            flex-shrink: 0;
+        }
+        
+        .client-logo:hover {
+            filter: grayscale(0%) opacity(100%);
+        }
+
+        .marquee-container {
+            display: flex;
+            width: fit-content;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+    </style>
+</head>
+<body class="text-white">
+
+    <video autoplay muted loop id="bg-video">
+        <source src="assets/index.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-gray-900 bg-opacity-30 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold gradient-text">Nexorsis Tech</a>
+            <nav id="nav-menu" class="hidden md:flex space-x-8">
+                <a href="#solutions" class="text-gray-300 hover:text-white transition duration-300">Solutions</a>
+                <a href="#clients" class="text-gray-300 hover:text-white transition duration-300">Clients</a>
+                <a href="#updates" class="text-gray-300 hover:text-white transition duration-300">Updates</a>
+                <a href="workshop.html" class="text-gray-300 hover:text-white transition duration-300">Workshops</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition duration-300">About Us</a>
+                <a href="#contact" class="text-gray-300 hover:text-white transition duration-300">Contact</a>
+            </nav>
+            <button id="nav-toggle" class="md:hidden focus:outline-none">
+                <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-40 hidden md:hidden">
+        <div class="flex flex-col items-center justify-center h-full">
+            <a href="#solutions" class="text-4xl text-white my-4 hover:text-green-400">Solutions</a>
+            <a href="#clients" class="text-4xl text-white my-4 hover:text-green-400">Clients</a>
+            <a href="#updates" class="text-4xl text-white my-4 hover:text-green-400">Updates</a>
+            <a href="workshops.html" class="text-4xl text-white my-4 hover:text-green-400">Workshops</a>
+            <a href="#about" class="text-4xl text-white my-4 hover:text-green-400">About Us</a>
+            <a href="#contact" class="text-4xl text-white my-4 hover:text-green-400">Contact</a>
+        </div>
+    </div>
+
+    <section class="min-h-screen flex flex-col justify-center items-center text-center p-8 relative z-10">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
+                Secure Your Digital Future with <span class="gradient-text">AI-Powered Defense</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-300">
+                Leverage cutting-edge artificial intelligence to predict, prevent, and respond to cyber threats in real-time.
+            </p>
+            <div class="mt-10 flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
+                <a href="#solutions" class="bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                    Explore Our Solutions
+                </a>
+                <a href="#contact" class="bg-gray-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-gray-600 transition duration-300 transform hover:scale-105">
+                    Request a Demo
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-10">
+            <svg class="w-8 h-8 text-gray-400 scroll-down" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="solutions" class="py-20 p-8 relative overflow-hidden">
+        <div class="solutions-bg"></div>
+        <div class="container mx-auto text-center relative z-10">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">Our Solutions</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                We provide comprehensive cybersecurity services to protect your assets from the most sophisticated threats.
+            </p>
+            <div class="mt-12 solution-grid grid gap-8">
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 6V18L12 22L21 18V6L12 2Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 6V18" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 9L12 12L9 9" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 15L12 12L9 15" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Network Security</h3>
+                    <p class="text-gray-400 text-sm">
+                        Protect your network infrastructure from unauthorized access, attacks, and data breaches.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 2H9C7.34315 2 6 3.34315 6 5V19C6 20.6569 7.34315 22 9 22H15C16.6569 22 18 20.6569 18 19V5C18 3.34315 16.6569 2 15 2Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 18V18.01" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 10V14" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 12H14" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="8" y="7" width="8" height="2" rx="1" fill="#6EE7B7"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Mobile Security</h3>
+                    <p class="text-gray-400 text-sm">
+                        Comprehensive solutions to secure mobile devices and applications from a wide range of threats.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.5 22H6C4.89543 22 4 21.1046 4 20V4C4 2.89543 4.89543 2 6 2H14L20 8V12.5M14 2V8H20" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 16L20 20M20 16L16 20" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 12H10.01M10 16H10.01" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 12H12M8 16H12" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Source Code Audit</h3>
+                    <p class="text-gray-400 text-sm">
+                        In-depth review of your application's source code to identify and mitigate vulnerabilities.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3 6V18L12 22L21 18V6L12 2Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 6.75V17.25" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15.75 8.25L12 17.25L8.25 8.25" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Managed Security Services</h3>
+                    <p class="text-gray-400 text-sm">
+                        24/7 monitoring, detection, and expert response to protect your critical infrastructure and data around the clock.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11 19.5C15.6944 19.5 19.5 15.6944 19.5 11C19.5 6.30558 15.6944 2.5 11 2.5C6.30558 2.5 2.5 6.30558 2.5 11C2.5 15.6944 6.30558 19.5 11 19.5Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16.5 16.5L21.5 21.5" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 7V15" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 11H15" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Vulnerability Assessment</h3>
+                    <p class="text-gray-400 text-sm">
+                        Comprehensive assessments to find and fix security weaknesses before attackers can exploit them.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.68629 2 6 4.68629 6 8C6 11.3137 8.68629 14 12 14C15.3137 14 18 11.3137 18 8C18 4.68629 15.3137 2 12 2Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 14C12 16.2091 10.2091 18 8 18C5.79086 18 4 16.2091 4 14" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 14C12 16.2091 13.7909 18 16 18C18.2091 18 20 16.2091 20 14" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 22C12 19.7909 10.2091 18 8 18" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 22C12 19.7909 13.7909 18 16 18" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Cyber R&D</h3>
+                    <p class="text-gray-400 text-sm">
+                        Cutting-edge research and development to stay ahead of zero-day vulnerabilities and emerging threats.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12V19.5C5 20.3284 5.67157 21 6.5 21H17.5C18.3284 21 19 20.3284 19 19.5V12M5 12H19M5 12H19M5 12V4.5C5 3.67157 5.67157 3 6.5 3H17.5C18.3284 3 19 3.67157 19 4.5V12" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 12V16M16 12V16M12 12V16" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Penetration Testing</h3>
+                    <p class="text-gray-400 text-sm">
+                        Simulated cyberattacks to expose and fix security weaknesses before a real attack occurs.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L15 15" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 17C13.866 17 17 13.866 17 10C17 6.13401 13.866 3 10 3C6.13401 3 3 6.13401 3 10C3 13.866 6.13401 17 10 17Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 13V10H7" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">Threat Analysis</h3>
+                    <p class="text-gray-400 text-sm">
+                        In-depth analysis to understand threat actors, their tactics, and their potential impact on your business.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 10V21H6V10M18 10C18 13.3137 15.3137 16 12 16C8.68629 16 6 13.3137 6 10M18 10V3H6V10" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 16V22" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">SOC Services</h3>
+                    <p class="text-gray-400 text-sm">
+                        Security Operations Center (SOC) services for continuous monitoring, incident response, and threat hunting.
+                    </p>
+                </div>
+                <div class="solution-card p-8 flex flex-col items-center text-center">
+                    <div class="icon-container w-20 h-20 flex items-center justify-center rounded-3xl mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white solution-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12H15" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 9V15" stroke="#6EE7B7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2 text-white">DLP Solutions</h3>
+                    <p class="text-gray-400 text-sm">
+                        Data Loss Prevention (DLP) solutions to protect sensitive information from unauthorized access and exfiltration.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="py-20 p-8 relative z-10 bg-slate-900 bg-opacity-30 overflow-hidden">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">Trusted by Our Clients</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12">
+                We're proud to partner with leading companies to secure their digital infrastructure.
+            </p>
+        </div>
+        <div class="marquee-container">
+            <div class="flex items-center gap-12 lg:gap-24 px-8">
+                <img src="https://placehold.co/150x50/3f51b5/ffffff?text=TechCorp" alt="Client Logo 1" class="client-logo">
+                <img src="https://placehold.co/150x50/f44336/ffffff?text=InnovateInc" alt="Client Logo 2" class="client-logo">
+                <img src="https://placehold.co/150x50/ff9800/ffffff?text=SecureSol" alt="Client Logo 3" class="client-logo">
+                <img src="https://placehold.co/150x50/4caf50/ffffff?text=DataGuard" alt="Client Logo 4" class="client-logo">
+                <img src="https://placehold.co/150x50/2196f3/ffffff?text=CyberX" alt="Client Logo 5" class="client-logo">
+                <img src="https://placehold.co/150x50/e91e63/ffffff?text=Fintech" alt="Client Logo 6" class="client-logo">
+                <img src="https://placehold.co/150x50/9c27b0/ffffff?text=GlobalTel" alt="Client Logo 7" class="client-logo">
+            </div>
+            <div class="flex items-center gap-12 lg:gap-24 px-8">
+                <img src="https://placehold.co/150x50/3f51b5/ffffff?text=TechCorp" alt="Client Logo 1" class="client-logo">
+                <img src="https://placehold.co/150x50/f44336/ffffff?text=InnovateInc" alt="Client Logo 2" class="client-logo">
+                <img src="https://placehold.co/150x50/ff9800/ffffff?text=SecureSol" alt="Client Logo 3" class="client-logo">
+                <img src="https://placehold.co/150x50/4caf50/ffffff?text=DataGuard" alt="Client Logo 4" class="client-logo">
+                <img src="https://placehold.co/150x50/2196f3/ffffff?text=CyberX" alt="Client Logo 5" class="client-logo">
+                <img src="https://placehold.co/150x50/e91e63/ffffff?text=Fintech" alt="Client Logo 6" class="client-logo">
+                <img src="https://placehold.co/150x50/9c27b0/ffffff?text=GlobalTel" alt="Client Logo 7" class="client-logo">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 p-8 relative z-10">
+        <div class="container mx-auto flex flex-col lg:flex-row items-center space-y-12 lg:space-y-0 lg:space-x-12">
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">About Nexorsis Tech</h2>
+                <p class="text-gray-400 text-lg">
+                    Founded by a team of cybersecurity veterans and AI pioneers, Nexorsis Tech is dedicated to building a safer digital world. We believe that the best defense is a proactive one, which is why our solutions are powered by intelligent systems that learn and adapt to new threats.
+                </p>
+                <p class="mt-4 text-gray-400 text-lg">
+                    Our mission is to empower businesses of all sizes with the tools and expertise needed to withstand the most complex cyberattacks. From small startups to large enterprises, we tailor our services to meet your unique security needs.
+                </p>
+            </div>
+            <div class="lg:w-1/2 flex justify-center">
+                <svg width="100%" height="auto" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-w-md w-full opacity-80">
+                    <rect x="50" y="50" width="300" height="200" rx="20" ry="20" fill="#1E293B" stroke="#6EE7B7" stroke-width="2"/>
+                    <path d="M70 70H330V230H70V70Z" fill="url(#pattern0)"/>
+                    <circle cx="200" cy="150" r="80" stroke="#3B82F6" stroke-width="2"/>
+                    <circle cx="200" cy="150" r="60" stroke="#3B82F6" stroke-width="2" opacity="0.6"/>
+                    <line x1="120" y1="150" x2="280" y2="150" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="200" y1="70" x2="200" y2="230" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M100 100C130 70 270 70 300 100" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M100 200C130 230 270 230 300 200" stroke="#6EE7B7" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                            <path d="M0 0H1V1H0V0Z" fill="white"/>
+                        </pattern>
+                    </defs>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="updates" class="py-20 p-8 relative z-10 bg-slate-900 bg-opacity-30">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">Latest Cybersecurity Insights</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto mb-12">
+                Stay ahead of the curve with our latest research and expert analysis.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-800 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <span class="text-sm font-semibold text-green-400">October 26, 2024</span>
+                    <h3 class="text-xl font-bold text-white mt-2 mb-3">Understanding Zero-Day Attacks</h3>
+                    <p class="text-gray-400 text-sm">
+                        A deep dive into how zero-day vulnerabilities are exploited and what you can do to protect your systems.
+                    </p>
+                    <a href="#" class="inline-block mt-4 text-blue-400 font-semibold hover:underline">Read more &rarr;</a>
+                </div>
+                <div class="bg-slate-800 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <span class="text-sm font-semibold text-green-400">October 24, 2024</span>
+                    <h3 class="text-xl font-bold text-white mt-2 mb-3">The Future of AI in Threat Detection</h3>
+                    <p class="text-gray-400 text-sm">
+                        How artificial intelligence is revolutionizing the way we detect and respond to cyber threats.
+                    </p>
+                    <a href="#" class="inline-block mt-4 text-blue-400 font-semibold hover:underline">Read more &rarr;</a>
+                </div>
+                <div class="bg-slate-800 rounded-2xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <span class="text-sm font-semibold text-green-400">October 22, 2024</span>
+                    <h3 class="text-xl font-bold text-white mt-2 mb-3">Social Engineering Tactics to Watch Out For</h3>
+                    <p class="text-gray-400 text-sm">
+                        Expert tips on how to recognize and defend against sophisticated social engineering attacks.
+                    </p>
+                    <a href="#" class="inline-block mt-4 text-blue-400 font-semibold hover:underline">Read more &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 p-8 relative z-10">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-5xl font-bold mb-4 gradient-text">Get in Touch</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                Ready to secure your business? Connect with us through one of the options below.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="contact-box">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-16 h-16 text-blue-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.68629 2 6 4.68629 6 8C6 11.3137 12 22 12 22C12 22 18 11.3137 18 8C18 4.68629 15.3137 2 12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 11C13.6569 11 15 9.65685 15 8C15 6.34315 13.6569 5 12 5C10.3431 5 9 6.34315 9 8C9 9.65685 10.3431 11 12 11Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Visit Our Office</h3>
+                    <p class="text-gray-400">
+                        123 Security Blvd, Suite 400<br>Cyber City, CA 90210
+                    </p>
+                </div>
+                <div class="contact-box">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-16 h-16 text-green-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 16.92V19C22 20.1046 21.1046 21 20 21H4C2.89543 21 2 20.1046 2 19V5C2 3.89543 2.89543 3 4 3H20C21.1046 3 22 3.89543 22 5V16.92ZM14 12V15H10V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 18H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 16.92L17.5 12H6.5L2 16.92" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Call Us</h3>
+                    <p class="text-gray-400">
+                        <a href="tel:+15551234567" class="hover:underline">+1 (555) 123-4567</a>
+                    </p>
+                </div>
+                <div class="contact-box">
+                    <div class="flex justify-center mb-4">
+                        <svg class="w-16 h-16 text-red-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1046 4 22 4.89543 22 6V18C22 19.1046 21.1046 20 20 20H4C2.89543 20 2 19.1046 2 18V6C2 4.89543 2.89543 4 4 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2">Email Us</h3>
+                    <p class="text-gray-400">
+                        <a href="mailto:info@nexorsistech.site" class="hover:underline">info@nexorsistech.site</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 bg-opacity-50 text-center py-8 relative z-10">
+        <p class="text-gray-500 text-sm">&copy; 2025 Nexorsis Tech. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        navToggle.addEventListener('click', () => {
+            mobileMenuOverlay.classList.toggle('hidden');
+        });
+
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenuOverlay.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
